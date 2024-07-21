@@ -1,6 +1,8 @@
+/* this is a barrier, next problem is a seperate example im practicing*/
 function myFunction() {
   document.getElementById("demo").innerHTML = "Paragraph changed.";
 }
+
 /* this is a barrier, next problem is a seperate example im practicing*/
 let a, b, c;
 a = 2;
@@ -8,17 +10,16 @@ b = 3;
 c = a + b;
 console.log("The value of c is " + c + ".");
 
+/* this is a barrier, next problem is a seperate example im practicing*/
 function myFunction() {
     console.log("Hello");
     console.log("How are you?");
 }
-
 myFunction()
 
 /* this is a barrier, next problem is a seperate example im practicing*/
 let num1 = 50
 let num2 = 50.05
-
 let str1 = "Geek"
 let str2 = 'Geeks'
 
@@ -36,7 +37,6 @@ function MyFunction() {
 }
 MyFunction();
 
-
 /* this is a barrier, next problem is a seperate example im practicing*/
 let x, y, sum;
 x = 3;
@@ -53,5 +53,14 @@ y = 30
 num = x / 2;
 sum = x + y;
 console.log(num + "\n" + sum);
+
+/* this is a barrier, next problem is a seperate example im practicing*/
+function func() {
+    let num = 45;
+    console.log(num);
+}
+func();
+
+/* this is a barrier, next problem is a seperate example im practicing*/
 
 
