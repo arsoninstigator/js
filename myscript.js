@@ -1,7 +1,7 @@
 function myFunction() {
   document.getElementById("demo").innerHTML = "Paragraph changed.";
 }
-
+/* this is a barrier, next problem is a seperate example im practicing*/
 let a, b, c;
 a = 2;
 b = 3;
@@ -15,6 +15,7 @@ function myFunction() {
 
 myFunction()
 
+/* this is a barrier, next problem is a seperate example im practicing*/
 let num1 = 50
 let num2 = 50.05
 
@@ -26,20 +27,31 @@ console.log(num2)
 console.log(str1)
 console.log(str2)
 
-
-// Global variable declaration
+/* this is a barrier, next problem is a seperate example im practicing*/
 let Name = "Apple";
-// Function definition
 function MyFunction() {
-// Local variable declaration
     let num = 45;
-    // Display the value of Global variable
     console.log(Name);
-    // Display the value of local variable
     console.log(num);
 }
-
-// Function call
 MyFunction();
+
+
+/* this is a barrier, next problem is a seperate example im practicing*/
+let x, y, sum;
+x = 3;
+y = 23;
+
+sum = x + y;
+console.log(sum);
+
+/* this is a barrier, next problem is a seperate example im practicing*/
+let x, num, sum;
+x = 20;
+y = 30
+
+num = x / 2;
+sum = x + y;
+console.log(num + "\n" + sum);
 
 
