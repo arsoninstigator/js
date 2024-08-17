@@ -23,11 +23,11 @@ for (let index = 1; index < gridItems.length + 1; index++) {
         row = []; 
     } else { 
         let item = gridItems[index - 1]; 
-
-// assign 2 game grids as 2
-matrix[rowIdx][colIdx].firstElementChild.textContent = 2; 
-matrix[rowIdx2][colIdx2].firstElementChild.textContent = 2; 
         item.firstElementChild.innerText = ""; 
         row.push(item); 
     } 
 } 
+
+// assign 2 game grids as 2
+matrix[rowIdx][colIdx].firstElementChild.textContent = 2; 
+matrix[rowIdx2][colIdx2].firstElementChild.textContent = 2; 
