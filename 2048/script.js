@@ -12,6 +12,21 @@ let options = [
 let matrix = []; 
 let prevMatrix; 
 
+let colors = [ 
+    "#caf0f8", 
+    "#90e0ef", 
+    "#00b4d8", 
+    "#0077b6", 
+    "#03045e", 
+    "#023047", 
+    "#fca311", 
+    "#14213d", 
+    "#e63946", 
+    "#ffc300", 
+    "#6a040f", 
+    "#000000", 
+]; 
+
 // initial game grid 
 let row = []; 
 for (let index = 1; index < gridItems.length + 1; index++) { 
@@ -29,5 +44,18 @@ for (let index = 1; index < gridItems.length + 1; index++) {
 } 
 
 // assign 2 game grids as 2
+const rowIdx = Math.floor(Math.random() * 4); 
+const colIdx = Math.floor(Math.random() * 4); 
+let rowIdx2 = Math.floor(Math.random() * 4); 
+let colIdx2 = Math.floor(Math.random() * 4); 
+  
+if (rowIdx === rowIdx2 && colIdx === colIdx2) { 
+    rowIdx2 = Math.floor(Math.random() * 4); 
+    colIdx2 = Math.floor(Math.random() * 4); 
+}
 matrix[rowIdx][colIdx].firstElementChild.textContent = 2; 
 matrix[rowIdx2][colIdx2].firstElementChild.textContent = 2; 
+
+let availIndexes = updateAvailIndexes(); 
+  
+updateColors(); 
