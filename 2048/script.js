@@ -58,7 +58,8 @@ matrix[rowIdx2][colIdx2].firstElementChild.textContent = 2;
 
 document.addEventListener("keydown", moveBlocks); 
 const arrayColumn = (arr, n) => arr.map((x) => x[n]); // 2d array
-  
+
+// using arrows to move
 function moveBlocks(e) { 
     if ( 
         e.key !== "ArrowLeft" && 
@@ -106,6 +107,39 @@ function moveBlocks(e) {
         moveRight(col3); 
         moveRight(col4); 
     }
+
+    matrixVals = getCurrentMatrixValues(); 
+    availIndexes = updateAvailIndexes(); 
+    updateColors(); 
+  
+    let check = checkMatrixEquality(prevMatrix, matrixVals); 
+  
+    if (availIndexes.length === 0 && check === true) { 
+        gameOver("loose"); 
+    } 
+  
+    if (moves % moveFactor === 0) { 
+        generateNewBlock(); 
+    } 
+} 
+  
+setInterval(() => { 
+    availIndexes = updateAvailIndexes(); 
+    generateNewBlock(); 
+}, 8000); 
+  
+setTimeout(() => { 
+    options.push(16); 
+    setTimeout(() => { 
+        options.push(16); 
+        options.push(32); 
+        setTimeout(() => { 
+            options.push(16); 
+            options.push(32); 
+            options.push(64); 
+        }, 40000); 
+    }, 18000); 
+}, 120000);
 
 let availIndexes = updateAvailIndexes(); 
   
