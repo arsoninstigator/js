@@ -141,6 +141,119 @@ setTimeout(() => {
     }, 18000); 
 }, 120000);
 
+// shift + move left and right
+
+function getCurrentMatrixValues() { 
+    let gridItems = [ 
+        ...document.querySelectorAll(".grid-item"), 
+    ]; 
+    let matrix_grid = []; 
+    let row = []; 
+    for ( 
+        let index = 1; 
+        index < gridItems.length + 1; 
+        index++ 
+    ) { 
+        if (index % 4 === 0) { 
+            let item = gridItems[index - 1]; 
+            row.push(item.firstElementChild.innerText); 
+            matrix_grid.push(row); 
+            row = []; 
+        } else { 
+            let item = gridItems[index - 1]; 
+            row.push(item.firstElementChild.innerText); 
+        } 
+    } 
+    return matrix_grid; 
+} 
+  
+function shiftLeft(arr) { 
+    for (let i = 0; i < 4; i++) { 
+        for (let i = 1; i < 4; i++) { 
+            let currElement = arr[i].firstElementChild; 
+            let prevElement = arr[i - 1].firstElementChild; 
+            if (prevElement.innerText == 0) { 
+                prevElement.innerText = 
+                    currElement.innerText; 
+                currElement.innerText = ""; 
+            } 
+        } 
+    } 
+} 
+  
+function shiftRight(arr) { 
+    for (let i = 0; i < 4; i++) { 
+        for (let i = 2; i >= 0; i--) { 
+            let currElement = arr[i].firstElementChild; 
+            let nextElement = arr[i + 1].firstElementChild; 
+            if (nextElement.innerText == 0) { 
+                nextElement.innerText = 
+                    currElement.innerText; 
+                currElement.innerText = ""; 
+            } 
+        } 
+    } 
+} 
+  
+function moveRight(row) { 
+    shiftRight(row); 
+  
+    for (let i = 2; i >= 0; i--) { 
+        let currElement = row[i].firstElementChild; 
+        let nextElement = row[i + 1].firstElementChild; 
+        let val = parseInt(currElement.innerText); 
+        let nextVal = parseInt(nextElement.innerText); 
+        if (val === nextVal && val !== 0) { 
+            let newVal = val + nextVal; 
+            nextElement.innerText = newVal; 
+            currElement.innerText = ""; 
+            score = score + 2; 
+            score_val.innerText = score; 
+            if (newVal === 2048) { 
+                gameOver("Win"); 
+            } 
+        } 
+    } 
+  
+    shiftRight(row); 
+} 
+  
+function moveLeft(row) { 
+    shiftLeft(row); 
+  
+    for (let i = 1; i < 4; i++) { 
+        let currElement = row[i].firstElementChild; 
+        let prevElement = row[i - 1].firstElementChild; 
+        let val = parseInt(currElement.innerText); 
+        let prevVal = parseInt(prevElement.innerText); 
+        if (val === prevVal && val !== 0) { 
+            let newVal = val + prevVal; 
+            prevElement.innerText = newVal; 
+            currElement.innerText = ""; 
+            score = score + 2; 
+            score_val.innerText = score; 
+            if (newVal === 2048) { 
+                gameOver("Win"); 
+            } 
+        } 
+    } 
+  
+    shiftLeft(row); 
+} 
+  
+function updateAvailIndexes() { 
+    matrixValues = getCurrentMatrixValues(); 
+    let grid = []; 
+    for (let i = 0; i < 4; i++) { 
+        for (let j = 0; j < 4; j++) { 
+            if (matrixValues[i][j] == "") { 
+                grid.push([i, j]); 
+            } 
+        } 
+    } 
+    return grid; 
+}
+
 let availIndexes = updateAvailIndexes(); 
   
 updateColors(); 
