@@ -56,6 +56,57 @@ if (rowIdx === rowIdx2 && colIdx === colIdx2) {
 matrix[rowIdx][colIdx].firstElementChild.textContent = 2; 
 matrix[rowIdx2][colIdx2].firstElementChild.textContent = 2; 
 
+document.addEventListener("keydown", moveBlocks); 
+const arrayColumn = (arr, n) => arr.map((x) => x[n]); // 2d array
+  
+function moveBlocks(e) { 
+    if ( 
+        e.key !== "ArrowLeft" && 
+        e.key !== "ArrowRight" && 
+        e.key !== "ArrowUp" && 
+        e.key !== "ArrowDown"
+    ) { 
+        return; 
+    } 
+  
+    moves++; 
+    matrixVals = getCurrentMatrixValues(); 
+    prevMatrix = matrixVals; 
+  
+    let col1 = arrayColumn(matrix, 0); 
+    let col2 = arrayColumn(matrix, 1); 
+    let col3 = arrayColumn(matrix, 2); 
+    let col4 = arrayColumn(matrix, 3); 
+    let row1 = matrix[0]; 
+    let row2 = matrix[1]; 
+    let row3 = matrix[2]; 
+    let row4 = matrix[3]; 
+  
+    if (e.key === "ArrowLeft") { 
+        moveLeft(row1); 
+        moveLeft(row2); 
+        moveLeft(row3); 
+        moveLeft(row4); 
+    } 
+    if (e.key === "ArrowRight") { 
+        moveRight(row1); 
+        moveRight(row2); 
+        moveRight(row3); 
+        moveRight(row4); 
+    } 
+    if (e.key === "ArrowUp") { 
+        moveLeft(col1); 
+        moveLeft(col2); 
+        moveLeft(col3); 
+        moveLeft(col4); 
+    } 
+    if (e.key === "ArrowDown") { 
+        moveRight(col1); 
+        moveRight(col2); 
+        moveRight(col3); 
+        moveRight(col4); 
+    }
+
 let availIndexes = updateAvailIndexes(); 
   
 updateColors(); 
